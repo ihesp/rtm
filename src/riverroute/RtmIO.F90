@@ -70,7 +70,7 @@ module RtmIO
 !
 !
 ! !PRIVATE MEMBER FUNCTIONS:
-!
+! 
 
   interface ncd_putatt
      module procedure ncd_putatt_int
@@ -1850,8 +1850,9 @@ contains
     integer :: ndims_file                    ! temporary
     character(len=64) dimname_file           ! dimension name on file
     character(len=64) dimname_iodesc         ! dimension name from io descriptor
-    integer, pointer  :: compDOF(:)
+    integer(kind=PIO_OFFSET_KIND), pointer  :: compDOF(:)
     character(len=32) :: subname = 'ncd_getiodesc'
+    character(len=64) :: fname
     !------------------------------------------------------------------------
 
     ! Determining if need to create a new io descriptor
@@ -1944,7 +1945,6 @@ contains
           call mpi_barrier(mpicom_rof,status)
        enddo
     endif
-
     call pio_initdecomp(pio_subsystem, baseTYPE, dims(1:ndims), compDOF, iodesc_list(iodnum)%iodesc)
 
     deallocate(compDOF)

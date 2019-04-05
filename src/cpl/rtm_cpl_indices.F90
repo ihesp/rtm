@@ -6,7 +6,7 @@ module rtm_cpl_indices
 !
 ! !DESCRIPTION:
 !    Module containing the indices for the fields passed between RTM and
-!    the driver. 
+!    the driver.
 !
 ! !USES:
 
@@ -50,7 +50,7 @@ contains
 
 
     !-----------------------------------------------------------------------
-    ! !DESCRIPTION: 
+    ! !DESCRIPTION:
     ! Set the coupler indices needed by the rof model coupler interface.
     ! runoff - (rtm -> ocn) and (rtm->lnd)
     !
@@ -74,7 +74,7 @@ contains
 
     call mct_aVect_init(avtmp, rList=seq_flds_x2r_fields, lsize=1)
 
-    index_x2r_Flrl_rofl = mct_avect_indexra(avtmp,'Flrl_rofl')
+    index_x2r_Flrl_rofl = mct_avect_indexra(avtmp,'Flrl_rofliq')
     index_x2r_Flrl_rofi = mct_avect_indexra(avtmp,'Flrl_rofi')
 
     nflds_x2r = mct_avect_nRattr(avtmp)
@@ -85,7 +85,7 @@ contains
 
     call mct_aVect_init(avtmp, rList=seq_flds_r2x_fields, lsize=1)
 
-    index_r2x_Forr_rofl  = mct_avect_indexra(avtmp,'Forr_rofl')
+    index_r2x_Forr_rofl  = mct_avect_indexra(avtmp,'Forr_rofliq')
     index_r2x_Forr_rofi  = mct_avect_indexra(avtmp,'Forr_rofi')
     index_r2x_Flrr_flood = mct_avect_indexra(avtmp,'Flrr_flood')
     index_r2x_Flrr_volr  = mct_avect_indexra(avtmp,'Flrr_volr')
@@ -97,5 +97,3 @@ contains
   end subroutine rtm_cpl_indices_set
 
 end module rtm_cpl_indices
-
-
